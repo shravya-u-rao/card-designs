@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expandable Cards</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f6f9fc;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .card {
+        width: calc(
+          (100% - 40px) / 3
+        ); /* Adjust width for three cards in a row */
+        max-width: 300px; /* Set maximum width to match stripe design */
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #fff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        padding: 20px;
+        background-color: #6772e5;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .card-content {
+        padding: 20px;
+        background-color: #fff;
+        display: none;
+      }
+
+      .card.expanded .card-content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-header">Click to expand</div>
+        <div class="card-content">
+          Content of Card 1 Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Soluta nulla ut deserunt repellendus sapiente voluptatem
+          distinctio illo odio, ex deleniti autem sequi ratione officiis quae
+          maiores ea nobis neque hic.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-header">Click to expand</div>
+        <div class="card-content">Content of Card 2</div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-header">Click to expand</div>
+        <div class="card-content">Content of Card 3</div>
+      </div>
+    </div>
+
+    <script>
+      function toggleCard(card) {
+        card.classList.toggle("expanded");
+        var cards = document.querySelectorAll(".card");
+        cards.forEach(function (item) {
+          if (item !== card) {
+            item.classList.remove("expanded");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
